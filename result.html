@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>BRIDGE | Your Result</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <h2>BRIDGE</h2>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="#">About</a>
+
+            <a href="#">How It Works</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <main class="result-page">
+
+
+        <div class="result-card">
+
+
+            <p class="result-label">
+                TEST COMPLETED
+            </p>
+
+
+            <h1>
+
+                Your English
+                <br>
+
+                <span>Level Result</span>
+
+            </h1>
+
+
+
+            <div class="score-box">
+
+                <p>Your Score</p>
+
+                <h2>
+
+                    <span id="score">0</span> / 10
+
+                </h2>
+
+            </div>
+
+
+
+            <div class="level-box">
+
+                <p>Estimated Level</p>
+
+
+                <h2 id="level">
+                    —
+                </h2>
+
+
+                <p id="level-description">
+                    —
+                </p>
+
+
+                <p id="level-message">
+                    —
+                </p>
+
+            </div>
+
+
+
+            <div class="result-actions">
+
+
+                <button id="review-btn">
+
+                    Review Your Answers →
+
+                </button>
+
+
+                <button id="restart-btn">
+
+                    Take the Test Again
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <script>
+
+
+        const score =
+            Number(localStorage.getItem("bridgeScore")) || 0;
+
+
+        document.getElementById("score").textContent =
+            score;
+
+
+
+        let level;
+        let description;
+        let message;
+
+
+
+        if (score <= 2) {
+
+            level = "A1";
+
+            description = "Beginner";
+
+            message =
+                "Every strong bridge starts with a first step. Keep going!";
+
+
+        } else if (score <= 4) {
+
+            level = "A2";
+
+            description = "Elementary";
+
+            message =
+                "You’re building a solid foundation. Keep practicing and growing!";
+
+
+        } else if (score <= 6) {
+
+            level = "B1";
+
+            description = "Intermediate";
+
+            message =
+                "You’re on the right track. Keep building your confidence!";
+
+
+        } else if (score <= 8) {
+
+            level = "B2";
+
+            description = "Upper-Intermediate";
+
+            message =
+                "You have a strong foundation. Keep pushing your English further!";
+
+
+        } else if (score === 9) {
+
+            level = "C1";
+
+            description = "Advanced";
+
+            message =
+                "Excellent work! Your English is already at a very strong level.";
+
+
+        } else {
+
+            level = "C2";
+
+            description = "Proficient";
+
+            message =
+                "Outstanding! You’ve reached the highest level of the BRIDGE.";
+
+        }
+
+
+
+        document.getElementById("level").textContent =
+            level;
+
+
+        document.getElementById("level-description").textContent =
+            description;
+
+
+        document.getElementById("level-message").textContent =
+            message;
+
+
+
+        document.getElementById("review-btn").onclick =
+            function () {
+
+                window.location.href = "review.html";
+
+            };
+
+
+
+        document.getElementById("restart-btn").onclick =
+            function () {
+
+                localStorage.removeItem("bridgeScore");
+
+                localStorage.removeItem("bridgeAnswers");
+
+                window.location.href = "test.html";
+
+            };
+
+
+    </script>
+
+
+</body>
+
+</html>
